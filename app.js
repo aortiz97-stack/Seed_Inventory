@@ -9,6 +9,15 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const mongoose = require('mongoose');
+
+require('dotenv').config();
+
+const mongoDB = MONGODB_URI || MONGODB_DEV_CONNECTION;
+mongoose.set('strictQuery', false);
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
