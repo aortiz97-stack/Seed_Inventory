@@ -11,12 +11,16 @@ var app = express();
 
 const mongoose = require('mongoose');
 
-require('dotenv').config();
-
-const mongoDB = MONGODB_URI || MONGODB_DEV_CONNECTION;
 mongoose.set('strictQuery', false);
 
+require('dotenv').config();
 
+const mongoDB = process.env.MONGODB_URI || process.env.MONGODB_DEV_CONNECTION;
+
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+main().catch((err) => console.log(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
