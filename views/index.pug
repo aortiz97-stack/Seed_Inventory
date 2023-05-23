@@ -1,5 +1,17 @@
 extends layout
 
+mixin createCategoryPanel(category)
+  a(href=`/category/${category._id}`)
+    .grid-panel 
+      h2 #{category.name}
+      p.category-description #{category.description}
+
+
 block content
-  h1= title
-  p Welcome to #{title}
+  header
+    h1 Seed Inventory
+  main
+    .grid-container
+      each category in categoryList
+        +createCategoryPanel(category) 
+  footer
