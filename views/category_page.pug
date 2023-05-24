@@ -1,0 +1,18 @@
+extends layout
+
+mixin createItemPanel(item)
+    a(href=`/item/${item._id}`)
+        .grid-panel 
+        h2 #{item.name}
+        p.item-description #{item.description}
+
+block content
+  header
+    h1= category.name
+  main
+    .grid-container
+      each item in items
+        +createItemPanel(item) 
+    a(href='/')
+        button Return to Categories Page
+  footer
