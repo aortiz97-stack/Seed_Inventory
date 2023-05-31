@@ -1,0 +1,23 @@
+extends layout
+
+
+block content
+  header
+    h1= item.name
+  main
+    p.perm-description= item.description
+    .category-list
+        p.category-intro Categories:  
+        each category in categoryObjectList
+            a(href=`/category/${category._id}`)
+                p.item-category= category.name
+    p.price Price: $#{item.price}
+    p.qty In Stock: #{item.number_in_stock}
+
+    a(href='/')
+        button.return-to-all-categories Return to All Categories Page
+    each category in categoryObjectList
+        a(href=`/category/${category._id}`)
+            button.return-to-specific-category Return to #{category.name} Category Page
+    
+  footer

@@ -67,7 +67,7 @@ async function createCategories() {
     categoryCreate('Cucurbits', false),
     categoryCreate('Brassicas', false),
     categoryCreate('Alliums', false),
-    categoryCreate('Root vegetables', false),
+    categoryCreate('Root Vegetables', false),
     categoryCreate('Salad Greens', false),
     categoryCreate('Other', 'Vegetable seeds that are uncategorized'),
   ]);
