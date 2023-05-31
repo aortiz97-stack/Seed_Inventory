@@ -7,10 +7,12 @@ const itemController = require('../controllers/itemController');
 /* GET home page. */
 router.get('/', categoryController.home_page);
 
+router.get('/category/create', categoryController.create_category_get);
+
+router.post('/category/create', categoryController.create_category_post);
+
 router.get('/category/:id', categoryController.category_page);
 
 router.get('/item/:id', itemController.item_page);
-
-router.get('/add-category-form', categoryController.create_category_get);
 
 module.exports = router;
