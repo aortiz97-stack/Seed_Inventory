@@ -13,5 +13,9 @@ block content
   main
     .grid-container
       each category in categoryList
-        +createCategoryPanel(category) 
+        +createCategoryPanel(category)
+    
+    a(href='/add-category-form')
+      button.add-category-form-button Add a new category
+
   footer

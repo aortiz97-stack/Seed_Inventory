@@ -11,4 +11,6 @@ router.get('/category/:id', categoryController.category_page);
 
 router.get('/item/:id', itemController.item_page);
 
+router.get('/add-category-form', categoryController.create_category_get);
+
 module.exports = router;

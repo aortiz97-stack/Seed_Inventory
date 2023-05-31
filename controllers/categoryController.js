@@ -20,3 +20,9 @@ exports.category_page = asyncHandler(async (req, res, next) => {
     items: allItems,
   });
 });
+
+exports.create_category_get = asyncHandler(async (req, res, next) => {
+  res.render('category_form_page', {
+    title: 'Add New Category',
+  });
+});
