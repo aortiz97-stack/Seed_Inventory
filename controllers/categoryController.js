@@ -16,7 +16,7 @@ exports.category_page = asyncHandler(async (req, res, next) => {
     Item.find({ category: req.params.id }),
   ]);
   res.render('category_page', {
-    category: category,
+    category,
     items: allItems,
   });
 });
@@ -51,11 +51,31 @@ exports.create_category_post = [
   }),
 ];
 
-exports.revise_category_get = asyncHandler(async(req, res, next) => {
+exports.revise_category_get = asyncHandler(async (req, res, next) => {
   const category = await Category.findById(req.params.id).exec();
   res.render('category_form_page', {
     title: 'Edit Category',
-    category: category,
+    category,
   });
 });
 
+exports.revise_category_post = [
+  body('name', 'Name of category must be specified').trim().isLength({ min: 1 }).escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const category = await Category.findById(req.params.id).exec();
+
+    if (!errors.isEmpty()) {
+      res.render('category_form_page', {
+        title: 'Edit Category',
+        category: category,
+        errors: errors.array(),
+      });
+    } else {
+      await category.save();
+      res.redirect(category.url);
+    }
+  }),
+];

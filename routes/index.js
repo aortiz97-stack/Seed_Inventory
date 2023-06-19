@@ -15,6 +15,8 @@ router.get('/category/:id', categoryController.category_page);
 
 router.get('/category/:id/revise', categoryController.revise_category_get);
 
+router.post('/category/:id/revise', categoryController.revise_category_post);
+
 router.get('/item/:id', itemController.item_page);
 
 module.exports = router;
