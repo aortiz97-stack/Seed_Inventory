@@ -11,7 +11,9 @@ block content
   main
     .grid-container
       each item in items
-        +createItemPanel(item) 
+        +createItemPanel(item)
+    a(href=`/category/${category._id}/revise`)
+        button Edit Category 
     a(href='/')
         button Return to Categories Page
   footer

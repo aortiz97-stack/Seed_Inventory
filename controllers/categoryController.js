@@ -50,3 +50,12 @@ exports.create_category_post = [
     }
   }),
 ];
+
+exports.revise_category_get = asyncHandler(async(req, res, next) => {
+  const category = await Category.findById(req.params.id).exec();
+  res.render('category_form_page', {
+    title: 'Edit Category',
+    category: category,
+  });
+});
+
